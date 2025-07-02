@@ -10,7 +10,7 @@ angular.module('myApp', [])
             const account_input = document.getElementById('account').value;
             const password_input = document.getElementById('password').value;
 
-            fetch('http://192.168.0.143:5000/api/data', {
+            fetch('https://192.168.0.143:5000/api/data', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({account_input, password_input })
