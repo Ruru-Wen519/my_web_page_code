@@ -9,11 +9,23 @@ var builder = WebApplication.CreateBuilder(args);
 //                        .AllowAnyHeader()
 //                        .AllowAnyMethod());
 //});
-// 加入 CORS 設定
+
+//// 加入 CORS 設定
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowAll",
+//        policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+//});
+
+// 設定 CORS，只允許你的前端網址
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll",
-        policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("https://my-web-page-code.onrender.com") // 換成你的前端網址
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
 });
 
 //^_^ 20250701 add by lisa for 啟用 CORS ==E==
