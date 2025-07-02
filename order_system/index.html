@@ -22,26 +22,27 @@
 				<div class="account_info">
 					<div class="account_area">
 						<div class="account_name">帳號：</div>
-						<input class="account_input"></input>
+						<input class="account_input"id="account"></input>
 					</div>
 				</div>
 				<div class="account_info">
 					<div class="password_area">
 						<div class="password_name">密碼：</div>
-						<input class="password_input"></input>
+						<input class="password_input" id="password" ></input>
 					</div>
 				</div>
 
 				<div class="account_info">
 					<div class="button_area">
 						<div class="btn-group-center">
-							<a href="order_system.html" class="btn btn-primary btn-lg">登入</a>
+							<button class="btn btn-primary btn-lg" ng-click="login(account_input,password_input)">登入</button>
 							<button class="btn btn-secondary btn-lg" ng-click="sayHello()">註冊</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<div id="result"></div>
 	</div>
 
 

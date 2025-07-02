@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>Monica API Demo</title>
+</head>
+<body>
+  <h1>前端呼叫 .NET API 範例</h1>
+  <form id="myForm">
+    <label>姓名：<input type="text" id="name" required></label><br>
+    <label>年齡：<input type="number" id="age" required></label><br>
+    <button type="submit">送出</button>
+  </form>
+  <hr>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const age = parseInt(document.getElementById('age').value, 10);
+
+      fetch('http://192.168.0.143:5000/api/data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, age })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById('result').textContent = '發生錯誤：' + err;
+      });
+    });
+  </script>
+</body>
+</html>
