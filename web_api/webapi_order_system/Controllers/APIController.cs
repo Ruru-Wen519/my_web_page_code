@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi_order_system.Models;
 
@@ -15,6 +16,7 @@ namespace webapi_order_system.Controllers
     //    }
     //}
     [Route("api/[controller]")]
+    [EnableCors("AllowMyWebPage")]
     public class APIController : ControllerBase
     {
         [HttpPost]

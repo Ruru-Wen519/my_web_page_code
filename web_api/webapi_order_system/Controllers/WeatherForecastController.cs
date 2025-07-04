@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using webapi_order_system.Models;
 
@@ -31,6 +32,7 @@ namespace webapi_order_system.Controllers
     //        .ToArray();
     //    }
     //}
+    [EnableCors("AllowMyWebPage")]
     [ApiController]
     [Route("api/[controller]")]
     public class DataController : ControllerBase

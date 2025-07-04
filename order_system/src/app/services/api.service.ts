@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,14 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private apiUrl = 'https://my-web-page-code.onrender.com';
+  private angularAppUrl = 'https://ruru-wen519.github.io/my_web_page_code/order_system/'; // 您的 Angular 應用程式 URL
 
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/data`, { withCredentials: true });
+    const headers = new HttpHeaders().set('Origin', this.angularAppUrl);
+    return this.http.get(`${this.apiUrl}/data`, { headers, withCredentials: true });
   }
 
   postData(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/data`, data, { withCredentials: true });
+    const headers = new HttpHeaders().set('Origin', this.angularAppUrl);
+    return this.http.post(`${this.apiUrl}/data`, data, { headers, withCredentials: true });
   }
 }
