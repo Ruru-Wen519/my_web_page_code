@@ -1,3 +1,5 @@
+using webapi_order_system.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 //^_^ 20250701 add by lisa for 啟用 CORS ==S==
@@ -43,6 +45,21 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
+//app.MapControllers();//^_^ 20250701 mark by lisa 
+
+//^_^ 20250701 add by lisa for 啟用 CORS ==S==
+// 新增路由配置
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapPost("/api/orders", async (context) =>
+{
+    // 處理 POST 請求的邏輯
+    var order = await context.Request.ReadFromJsonAsync<Order>();
+    // ...
+    await context.Response.WriteAsync("Order received");
+});
+//^_^ 20250701 add by lisa for 啟用 CORS ==E==
 
 app.Run();
