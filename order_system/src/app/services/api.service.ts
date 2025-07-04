@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private apiUrl = 'https://my-web-page-code.onrender.com';
-  private angularAppUrl = 'https://ruru-wen519.github.io/my_web_page_code/order_system/'; // 您的 Angular 應用程式 URL
+  private angularAppUrl = 'https://ruru-wen519.github.io'; // 您的 Angular 應用程式 URL
 
   constructor(private http: HttpClient) { }
 
