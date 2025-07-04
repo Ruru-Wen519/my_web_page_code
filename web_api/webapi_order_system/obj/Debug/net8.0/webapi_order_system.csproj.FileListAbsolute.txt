@@ -46,4 +46,3 @@ D:\my_web_page_code\web_api\output\Debug\net8.0\webapi_order_system.deps.json
 D:\my_web_page_code\web_api\output\Debug\net8.0\webapi_order_system.runtimeconfig.json
 D:\my_web_page_code\web_api\output\Debug\net8.0\webapi_order_system.dll
 D:\my_web_page_code\web_api\output\Debug\net8.0\webapi_order_system.pdb
-D:\my_web_page_code\web_api\webapi_order_system\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
