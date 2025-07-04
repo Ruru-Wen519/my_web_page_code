@@ -4,3 +4,5 @@
 *.exe
 *.DocumentLayout.backup.json
 *.json
+*.cache
+*.dll
