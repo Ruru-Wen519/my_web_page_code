@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("https://ruru-wen519.github.io") // 換成你的前端網址
+        policy.WithOrigins("https://my-web-page-code.onrender.com") // 換成你的前端網址
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -43,6 +43,12 @@ var app = builder.Build();
 // 加這一段
 //app.UseCors("AllowAngularDev");
 app.UseCors("AllowAll"); // 啟用 CORS
+app.UseCors(options =>
+{
+    options.WithOrigins("https://ruru-wen519.github.io")
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+});
 //^_^ 20250701 add by lisa for 啟用 CORS ==E==
 
 // Configure the HTTP request pipeline.
