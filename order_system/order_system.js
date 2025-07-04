@@ -12,7 +12,7 @@ angular.module('myApp', [])
 
             fetch('https://my-web-page-code.onrender.com', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({account_input, password_input })
             })
                 .then(response => response.json())
