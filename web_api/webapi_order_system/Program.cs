@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("https://my-web-page-code.onrender.com") // 換成你的前端網址
+        policy.WithOrigins("https://ruru-wen519.github.io") // 換成你的前端網址
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
