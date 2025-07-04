@@ -13,11 +13,11 @@ export class ApiService {
 
   getData(): Observable<any> {
     const headers = new HttpHeaders().set('Origin', this.angularAppUrl);
-    return this.http.get(`${this.apiUrl}/data`, { headers, withCredentials: true });
+    return this.http.get(`${this.angularAppUrl}/data`, { headers, withCredentials: true });
   }
 
   postData(data: any): Observable<any> {
     const headers = new HttpHeaders().set('Origin', this.angularAppUrl);
-    return this.http.post(`${this.apiUrl}/data`, data, { headers, withCredentials: true });
+    return this.http.post(`${this.angularAppUrl}/data`, data, { headers, withCredentials: true });
   }
 }
