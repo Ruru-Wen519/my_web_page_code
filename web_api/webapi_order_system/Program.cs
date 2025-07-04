@@ -6,7 +6,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowMyWebPage", policy =>
     {
-        policy.WithOrigins("https://ruru-wen519.github.io/my_web_page_code/order_system/") // 換成你的前端網址
+        policy.WithOrigins("https://ruru-wen519.github.io") // 換成你的前端網址
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -25,7 +25,7 @@ var app = builder.Build();
 //^_^ 20250701 add by lisa for 啟用 CORS ==S==
 app.Use(async (context, next) =>
 {
-    context.Response.Headers.Add("Access-Control-Allow-Origin", "https://ruru-wen519.github.io/my_web_page_code/order_system/");
+    context.Response.Headers.Add("Access-Control-Allow-Origin", "https://ruru-wen519.github.io");
     await next();
 });
 // 啟用 CORS
