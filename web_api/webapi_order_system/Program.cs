@@ -77,7 +77,7 @@ try
 	//^_^ 20250701 add by lisa for 啟用 CORS ==E==
 
 
-		app.Run();
+	app.Run();
 }
 catch (Exception ex)
 {
@@ -89,4 +89,19 @@ catch (Exception ex)
     // - 返回錯誤訊息給客戶端
     // - 通知管理員
     // - 執行其他錯誤處理動作
+}
+
+
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseHttpsRedirection();
+    }
+
+    app.UseRouting();
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllers();
+    });
 }
