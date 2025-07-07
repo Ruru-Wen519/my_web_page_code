@@ -8,3 +8,5 @@
 *.dll
 *.db-wal
 *.db-shm
+*.txt
+*.db

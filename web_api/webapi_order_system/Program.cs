@@ -53,9 +53,16 @@ try
 	{
 		app.UseSwagger();
 		app.UseSwaggerUI();
-	}
-
-	app.UseHttpsRedirection();
+        app.UseHttpsRedirection(); //lisa
+    }
+    //lisa ==S==
+    app.UseRouting();
+    //app.UseEndpoints(endpoints =>
+    //{
+    //    endpoints.MapControllers();
+    //});
+    //lisa ==E==
+    app.UseHttpsRedirection();
 
 	app.UseAuthorization();
 
@@ -92,16 +99,3 @@ catch (Exception ex)
 }
 
 
-public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-{
-    if (env.IsDevelopment())
-    {
-        app.UseHttpsRedirection();
-    }
-
-    app.UseRouting();
-    app.UseEndpoints(endpoints =>
-    {
-        endpoints.MapControllers();
-    });
-}
