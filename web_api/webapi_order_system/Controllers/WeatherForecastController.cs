@@ -42,7 +42,7 @@ namespace webapi_order_system.Controllers
         {
             var response = new
             {
-                Message = $"Hello, {request.account_input}! 你的年齡是 {request.password_input}。",
+                Message = $"Hello, {request.account_input}! Your age is {request.password_input}。",
                 Success = true
             };
             return Ok(response);
