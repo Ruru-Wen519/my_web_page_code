@@ -38,7 +38,7 @@ namespace webapi_order_system.Controllers
     public class DataController : ControllerBase
     {
         [HttpPost]
-        public IActionResult Post([FromBody] RequestModel request)
+        public IActionResult login([FromBody] RequestModel request)
         {
             var response = new
             {
