@@ -14,6 +14,17 @@ builder.Services.AddCors(options =>
     });
 });
 //^_^ 20250701 add by lisa for 啟用 CORS ==E==
+//^_^ 20250701 add by lisa for 配置 HTTPS 端口 ==S==
+// 配置 HTTPS 端口
+builder.WebHost.UseKestrel(options =>
+{
+    options.ListenLocalhost(5000);
+    options.ListenLocalhost(5001, listenOptions =>
+    {
+        listenOptions.UseHttps();
+    });
+});
+//^_^ 20250701 add by lisa for 配置 HTTPS 端口 ==E==
 
 // Add services to the container.
 

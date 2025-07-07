@@ -6,3 +6,5 @@
 *.json
 *.cache
 *.dll
+*.db-wal
+*.db-shm
