@@ -8,7 +8,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowMyWebPage", policy =>
     {
-        policy.WithOrigins("https://ruru-wen519.github.io") // 換成你的前端網址
+        policy.WithOrigins("https://web-front-code.onrender.com") // 換成你的前端網址
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -35,7 +35,16 @@ builder.Services.AddSwaggerGen();
 
 try
 {
+<<<<<<< HEAD
 	var app = builder.Build();
+=======
+    context.Response.Headers.Add("Access-Control-Allow-Origin", "https://web-front-code.onrender.com");
+    await next();
+});
+// 啟用 CORS
+app.UseCors("AllowMyWebPage");
+//^_^ 20250701 add by lisa for 啟用 CORS ==E==
+>>>>>>> dev_0707
 
 
 	//^_^ 20250701 add by lisa for 啟用 CORS ==S==
