@@ -33,7 +33,23 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+try
+{
+    var app = builder.Build();
+}
+catch (Exception ex)
+{
+    // 記錄異常資訊
+    Console.WriteLine($"An error occurred: {ex.Message}");
+    Console.WriteLine(ex.StackTrace);
+
+    // 可以在這裡添加其他異常處理邏輯,例如:
+    // - 返回錯誤訊息給客戶端
+    // - 通知管理員
+    // - 執行其他錯誤處理動作
+}
+
+
 
 //^_^ 20250701 add by lisa for 啟用 CORS ==S==
 app.Use(async (context, next) =>
@@ -73,4 +89,18 @@ app.MapPost("/api/orders", async (context) =>
 });
 //^_^ 20250701 add by lisa for 啟用 CORS ==E==
 
-app.Run();
+try
+{
+    app.Run();
+}
+catch (Exception ex)
+{
+    // 記錄異常資訊
+    Console.WriteLine($"An error occurred: {ex.Message}");
+    Console.WriteLine(ex.StackTrace);
+
+    // 可以在這裡添加其他異常處理邏輯,例如:
+    // - 返回錯誤訊息給客戶端
+    // - 通知管理員
+    // - 執行其他錯誤處理動作
+}
