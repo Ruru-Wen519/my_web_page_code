@@ -10,14 +10,28 @@ namespace webapi_order_system.Controllers
     public class DataController : ControllerBase
     {
         [HttpPost]
-        public IActionResult login([FromBody] RequestModel request)
+        //public IActionResult login([FromBody] RequestModel request)
+        //{
+        //    var response = new
+        //    {
+        //        Message = $"Hello, {request.account_input}! Your age is {request.password_input}¡C",
+        //        Success = true
+        //    };
+        //    return Ok(response);
+        //}
+        public ResponseModel login([FromBody] RequestModel request)
         {
-            var response = new
+            ResponseModel response = new ResponseModel();
+            if ("2025".Equals(request.account_input))
             {
-                Message = $"Hello, {request.account_input}! Your age is {request.password_input}¡C",
-                Success = true
-            };
-            return Ok(response);
+                response.is_correct = "0";
+            }
+            else
+            {
+                response.is_correct = "1";
+            }
+            response.message = "";
+            return response;
         }
     }
 }
