@@ -2,20 +2,20 @@ using webapi_order_system.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//^_^ 20250701 add by lisa for ±Ò¥Î CORS ==S==
-// ³]©w CORS¡A¥u¤¹³\§Aªº«eºÝºô§}
+//^_^ 20250701 add by lisa for ï¿½Ò¥ï¿½ CORS ==S==
+// ï¿½]ï¿½w CORSï¿½Aï¿½uï¿½ï¿½ï¿½\ï¿½Aï¿½ï¿½ï¿½eï¿½Ýºï¿½ï¿½}
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowMyWebPage", policy =>
     {
-        policy.WithOrigins("https://web-front-code.onrender.com") // ´«¦¨§Aªº«eºÝºô§}
+        policy.WithOrigins("https://web-front-code.onrender.com") // ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½eï¿½Ýºï¿½ï¿½}
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
 });
-//^_^ 20250701 add by lisa for ±Ò¥Î CORS ==E==
-//^_^ 20250701 add by lisa for °t¸m HTTPS ºÝ¤f ==S==
-// °t¸m HTTPS ºÝ¤f
+//^_^ 20250701 add by lisa for ï¿½Ò¥ï¿½ CORS ==E==
+//^_^ 20250701 add by lisa for ï¿½tï¿½m HTTPS ï¿½Ý¤f ==S==
+// ï¿½tï¿½m HTTPS ï¿½Ý¤f
 //builder.WebHost.UseKestrel(options =>
 //{
 //    options.ListenLocalhost(5000);
@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
 //        listenOptions.UseHttps();
 //    });
 //});
-//^_^ 20250701 add by lisa for °t¸m HTTPS ºÝ¤f ==E==
+//^_^ 20250701 add by lisa for ï¿½tï¿½m HTTPS ï¿½Ý¤f ==E==
 
 // Add services to the container.
 
@@ -35,27 +35,19 @@ builder.Services.AddSwaggerGen();
 
 try
 {
-<<<<<<< HEAD
 	var app = builder.Build();
-=======
     context.Response.Headers.Add("Access-Control-Allow-Origin", "https://web-front-code.onrender.com");
     await next();
-});
-// ±Ò¥Î CORS
-app.UseCors("AllowMyWebPage");
-//^_^ 20250701 add by lisa for ±Ò¥Î CORS ==E==
->>>>>>> dev_0707
 
-
-	//^_^ 20250701 add by lisa for ±Ò¥Î CORS ==S==
-	app.Use(async (context, next) =>
-	{
-		context.Response.Headers.Add("Access-Control-Allow-Origin", "https://ruru-wen519.github.io");
-		await next();
-	});
-	// ±Ò¥Î CORS
+	//^_^ 20250701 add by lisa for ï¿½Ò¥ï¿½ CORS ==S==
+	// app.Use(async (context, next) =>
+	// {
+	// 	context.Response.Headers.Add("Access-Control-Allow-Origin", "https://ruru-wen519.github.io");
+	// 	await next();
+	// });
+	// ï¿½Ò¥ï¿½ CORS
 	app.UseCors("AllowMyWebPage");
-	//^_^ 20250701 add by lisa for ±Ò¥Î CORS ==E==
+	//^_^ 20250701 add by lisa for ï¿½Ò¥ï¿½ CORS ==E==
 
 	// Configure the HTTP request pipeline.
 	if (app.Environment.IsDevelopment())
@@ -77,34 +69,34 @@ app.UseCors("AllowMyWebPage");
 
 	//app.MapControllers();//^_^ 20250701 mark by lisa 
 
-	//^_^ 20250701 add by lisa for ±Ò¥Î CORS ==S==
-	// ·s¼W¸ô¥Ñ°t¸m
+	//^_^ 20250701 add by lisa for ï¿½Ò¥ï¿½ CORS ==S==
+	// ï¿½sï¿½Wï¿½ï¿½ï¿½Ñ°tï¿½m
 	app.MapControllerRoute(
 		name: "default",
 		pattern: "{controller=Home}/{action=Index}/{id?}");
 
 	app.MapPost("/api/orders", async (context) =>
 	{
-		// ³B²z POST ½Ð¨DªºÅÞ¿è
+		// ï¿½Bï¿½z POST ï¿½Ð¨Dï¿½ï¿½ï¿½Þ¿ï¿½
 		var order = await context.Request.ReadFromJsonAsync<Order>();
 		// ...
 		await context.Response.WriteAsync("Order received");
 	});
-	//^_^ 20250701 add by lisa for ±Ò¥Î CORS ==E==
+	//^_^ 20250701 add by lisa for ï¿½Ò¥ï¿½ CORS ==E==
 
 
 	app.Run();
 }
 catch (Exception ex)
 {
-    // °O¿ý²§±`¸ê°T
+    // ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½ï¿½T
     Console.WriteLine($"An error occurred: {ex.Message}");
     Console.WriteLine(ex.StackTrace);
 
-    // ¥i¥H¦b³o¸Ì²K¥[¨ä¥L²§±`³B²zÅÞ¿è,¨Ò¦p:
-    // - ªð¦^¿ù»~°T®§µ¹«È¤áºÝ
-    // - ³qª¾ºÞ²z­û
-    // - °õ¦æ¨ä¥L¿ù»~³B²z°Ê§@
+    // ï¿½iï¿½Hï¿½bï¿½oï¿½Ì²Kï¿½[ï¿½ï¿½Lï¿½ï¿½ï¿½`ï¿½Bï¿½zï¿½Þ¿ï¿½,ï¿½Ò¦p:
+    // - ï¿½ï¿½^ï¿½ï¿½ï¿½~ï¿½Tï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½ï¿½
+    // - ï¿½qï¿½ï¿½ï¿½Þ²zï¿½ï¿½
+    // - ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½~ï¿½Bï¿½zï¿½Ê§@
 }
 
 
