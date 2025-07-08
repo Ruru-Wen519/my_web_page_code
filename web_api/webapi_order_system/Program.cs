@@ -36,15 +36,15 @@ builder.Services.AddSwaggerGen();
 try
 {
 	var app = builder.Build();
-    context.Response.Headers.Add("Access-Control-Allow-Origin", "https://web-front-code.onrender.com");
-    await next();
+    // context.Response.Headers.Add("Access-Control-Allow-Origin", "https://web-front-code.onrender.com");
+    // await next();
 
 	//^_^ 20250701 add by lisa for �ҥ� CORS ==S==
-	// app.Use(async (context, next) =>
-	// {
-	// 	context.Response.Headers.Add("Access-Control-Allow-Origin", "https://ruru-wen519.github.io");
-	// 	await next();
-	// });
+	app.Use(async (context, next) =>
+	{
+    context.Response.Headers.Add("Access-Control-Allow-Origin", "https://web-front-code.onrender.com");
+		await next();
+	});
 	// �ҥ� CORS
 	app.UseCors("AllowMyWebPage");
 	//^_^ 20250701 add by lisa for �ҥ� CORS ==E==
