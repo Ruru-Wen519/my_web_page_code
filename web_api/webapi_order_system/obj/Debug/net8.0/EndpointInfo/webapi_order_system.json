@@ -62,7 +62,24 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseModel"
+                }
+              }
+            }
           }
         }
       }
@@ -78,6 +95,20 @@
             "nullable": true
           },
           "password_input": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResponseModel": {
+        "type": "object",
+        "properties": {
+          "is_correct": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
             "type": "string",
             "nullable": true
           }

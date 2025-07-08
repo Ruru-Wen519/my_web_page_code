@@ -38,7 +38,7 @@ namespace webapi_order_system.Controllers
                 connection.Open();
 
                 // 撈取 test01 資料表
-                string query = "SELECT * FROM [test01] where username = '" + request.account_input + "' and userpassword = '" + request.password_input + "";
+                string query = "SELECT * FROM [test01] where username = '" + request.account_input + "' and userpassword = '" + request.password_input + "'";
                 SqlCommand command = new SqlCommand(query, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dataTable);
