@@ -29,7 +29,7 @@ var app = builder.Build();
 //^_^ 20250701 add by lisa for ±Ò¥Î CORS ==S==
 app.Use(async (context, next) =>
 {
-    context.Response.Headers.Add("Access-Control-Allow-Origin", "https://web-front-code.onrender.com");
+    context.Response.Headers.Append("Access-Control-Allow-Origin", "https://web-front-code.onrender.com");
     await next();
 });
 // ±Ò¥Î CORS
