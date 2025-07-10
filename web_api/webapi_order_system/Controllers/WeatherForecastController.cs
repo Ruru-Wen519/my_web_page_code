@@ -31,7 +31,9 @@ namespace webapi_order_system.Controllers
             DataTable dataTable = new DataTable();
 
             // 讀取連接字串
-            var connectionString = _configuration.GetConnectionString("DefaultConnection");
+#pragma warning disable CS8600 // 正在將 Null 常值或可能的 Null 值轉換為不可為 Null 的型別。
+            string connectionString = _configuration.GetConnectionString("DefaultConnection");
+#pragma warning restore CS8600 // 正在將 Null 常值或可能的 Null 值轉換為不可為 Null 的型別。
             if (string.IsNullOrEmpty(connectionString))
             {
                 // 處理 connectionString 為 null 或空字串的情況
