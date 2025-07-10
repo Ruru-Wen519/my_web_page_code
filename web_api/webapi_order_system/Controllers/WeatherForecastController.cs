@@ -31,7 +31,12 @@ namespace webapi_order_system.Controllers
             DataTable dataTable = new DataTable();
 
             // 讀取連接字串
-            string connectionString = _configuration.GetConnectionString("DefaultConnection");
+            var connectionString = _configuration.GetConnectionString("DefaultConnection");
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                // 處理 connectionString 為 null 或空字串的情況
+                throw new Exception("Connection string is not configured properly.");
+            }
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
