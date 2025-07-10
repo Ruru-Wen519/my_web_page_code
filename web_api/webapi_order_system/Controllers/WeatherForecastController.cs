@@ -31,9 +31,13 @@ namespace webapi_order_system.Controllers
             DataTable dataTable = new DataTable();
 
             // 讀取連接字串
-#pragma warning disable CS8600 // 正在將 Null 常值或可能的 Null 值轉換為不可為 Null 的型別。
-            string connectionString = _configuration.GetConnectionString("DefaultConnection");
-#pragma warning restore CS8600 // 正在將 Null 常值或可能的 Null 值轉換為不可為 Null 的型別。
+            //string connectionString = _configuration.GetConnectionString("DefaultConnection");
+            //if (string.IsNullOrEmpty(connectionString))
+            //{
+            //    // 處理 connectionString 為 null 或空字串的情況
+            //    throw new Exception("Connection string is not configured properly.");
+            //}
+            string connectionString = LoadConnectionString();
             if (string.IsNullOrEmpty(connectionString))
             {
                 // 處理 connectionString 為 null 或空字串的情況
@@ -71,11 +75,21 @@ namespace webapi_order_system.Controllers
             return response;
         }
 
-        private readonly IConfiguration _configuration;
+        //private readonly IConfiguration _configuration;
 
-        public DataController(IConfiguration configuration)
+        //public DataController(IConfiguration configuration)
+        //{
+        //    _configuration = configuration;
+        //}
+        private static string LoadConnectionString()
         {
-            _configuration = configuration;
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile("appsettings.json", optional: false)
+                .Build();
+
+            return configuration.GetConnectionString(
+                "DefaultConnection");
         }
     }
 }
