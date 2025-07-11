@@ -1,6 +1,5 @@
-using Microsoft.Extensions.Hosting;
-
 var builder = WebApplication.CreateBuilder(args);
+
 
 //^_^ 20250701 add by lisa for 啟用 CORS ==S==
 // 設定 CORS，只允許你的前端網址
@@ -15,8 +14,8 @@ builder.Services.AddCors(options =>
               .WithHeaders("authorization", "content-type"); // 允許的請求標頭
     });
 });
-//^_^ 20250701 add by lisa for 啟用 CORS ==E==
 
+//^_^ 20250701 add by lisa for 啟用 CORS ==E==
 // Add services to the container.
 
 builder.Services.AddControllers();
