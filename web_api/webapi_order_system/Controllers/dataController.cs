@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
+using webapi_order_system.Dto;
 using webapi_order_system.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -44,48 +48,28 @@ namespace webapi_order_system.Controllers
         //{
         //}
 
+        private readonly web_designContext _web_DesignContext;
+        public dataController (web_designContext web_Design)
+        {
+            _web_DesignContext = web_Design;
+        }
+
         [HttpPost]
 
-        public ResponseModel login([FromBody] RequestModel request)
+        public ResponseDto login([FromBody] RequestDto request)
         {
-            ResponseModel response = new ResponseModel();
+            ResponseDto response = new ResponseDto();
 
             //DataTable dataTable = new DataTable();
 
-            //// 讀取連接字串
-            ////string connectionString = _configuration.GetConnectionString("DefaultConnection");
-            ////if (string.IsNullOrEmpty(connectionString))
-            ////{
-            ////    // 處理 connectionString 為 null 或空字串的情況
-            ////    throw new Exception("Connection string is not configured properly.");
-            ////}
-            //string connectionString = LoadConnectionString();
-            //if (string.IsNullOrEmpty(connectionString))
-            //{
-            //    // 處理 connectionString 為 null 或空字串的情況
-            //    throw new Exception("Connection string is not configured properly.");
-            //}
+            // 執行原生 SQL 查詢並將結果轉換為 DataTable
+            //string query = "SELECT * FROM [login_data] WHERE login_name = '@login_name' AND login_password = '@login_password'";
+            //var parameters = new[] { new SqlParameter("@login_name", request.account_input), new SqlParameter("@login_password", request.password_input) };
+            string query = "SELECT * FROM [login_data] WHERE login_name = '" + request.account_input + "' AND login_password = '" + request.password_input + "'";
 
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //{
-            //    connection.Open();
+            var dto_Login_Datas = _web_DesignContext.Set<login_data>().FromSqlRaw(query).ToList();
 
-            //    // 撈取 test01 資料表
-            //    string query = "SELECT * FROM [test01] where username = '" + request.account_input + "' and userpassword = '" + request.password_input + "'";
-            //    SqlCommand command = new SqlCommand(query, connection);
-            //    SqlDataAdapter adapter = new SqlDataAdapter(command);
-            //    adapter.Fill(dataTable);
-            //}
-
-            //if (dataTable.Rows.Count > 0)
-            //{
-            //    response.is_correct = "0";
-            //}
-            //else
-            //{
-            //    response.is_correct = "1";
-            //}
-            if ("2025".Equals(request.account_input))
+            if (dto_Login_Datas.Count > 0)
             {
                 response.is_correct = "0";
             }
@@ -93,6 +77,14 @@ namespace webapi_order_system.Controllers
             {
                 response.is_correct = "1";
             }
+            //if ("2025".Equals(request.account_input))
+            //{
+            //    response.is_correct = "0";
+            //}
+            //else
+            //{
+            //    response.is_correct = "1";
+            //}
             response.message = "";
             return response;
         }

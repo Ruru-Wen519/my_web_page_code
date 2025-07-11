@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using webapi_order_system.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -19,6 +22,12 @@ builder.Services.AddCors(options =>
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+//^_^ 20250701 add by lisa for 連接資料庫 ==S==
+builder.Services.AddDbContext<web_designContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("WebDatabase")));
+//^_^ 20250701 add by lisa for 連接資料庫 ==E==
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
