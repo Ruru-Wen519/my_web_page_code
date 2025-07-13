@@ -12,9 +12,7 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins("https://web-front-code.onrender.com") // 換成你的前端網址
               .AllowAnyHeader()
-              .AllowAnyMethod()
-              .WithMethods("GET", "POST", "PUT", "DELETE") // 允許的 HTTP 方法
-              .WithHeaders("authorization", "content-type"); // 允許的請求標頭
+              .AllowAnyMethod();
     });
 });
 
