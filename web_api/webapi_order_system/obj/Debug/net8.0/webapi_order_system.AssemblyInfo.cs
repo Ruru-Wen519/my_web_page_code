@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("webapi_order_system")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3b5bb62a2d682e2d6466b56bf729f96b3e4ba22")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a806121b7aa7d50f0dac6446699073b330297a0")]
 [assembly: System.Reflection.AssemblyProductAttribute("webapi_order_system")]
 [assembly: System.Reflection.AssemblyTitleAttribute("webapi_order_system")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

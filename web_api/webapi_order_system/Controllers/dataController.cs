@@ -76,48 +76,58 @@ namespace webapi_order_system.Controllers
             {
                 response.is_correct = "1";
             }
-            //if ("2025".Equals(request.account_input))
-            //{
-            //    response.is_correct = "0";
-            //}
-            //else
-            //{
-            //    response.is_correct = "1";
-            //}
+           
+            response.message = "";
+            return response;
+        }
+        #region "測試"
+        //public ResponseDto login([FromBody] RequestDto request)
+        //{
+        //    ResponseDto response = new ResponseDto();
 
-            //try
-            //{
-            //    var cb = new SqlConnectionStringBuilder();
-            //    cb.DataSource = "tcp:web-design-server.database.windows.net";
-            //    cb.UserID = "Web";
-            //    cb.Password = "bew_0519";
-            //    cb.InitialCatalog = "web_design";
+        //    DataTable dataTable = new DataTable();
+        //    //if ("2025".Equals(request.account_input))
+        //    //{
+        //    //    response.is_correct = "0";
+        //    //}
+        //    //else
+        //    //{
+        //    //    response.is_correct = "1";
+        //    //}
 
-            //    using (var connection = new SqlConnection(cb.ConnectionString))
-            //    {
-            //        connection.Open();
-            //        string query = "SELECT * FROM [login_data] WHERE login_name = '" + request.account_input + "' AND login_password = '" + request.password_input + "'";
-            //        SqlCommand command = new SqlCommand(query, connection);
-            //        SqlDataAdapter adapter = new SqlDataAdapter(command);
-            //        adapter.Fill(dataTable);
+        //    try
+        //    {
+        //        var cb = new SqlConnectionStringBuilder();
+        //        cb.DataSource = "tcp:web-design-server.database.windows.net";
+        //        cb.UserID = "Web";
+        //        cb.Password = "bew_0519";
+        //        cb.InitialCatalog = "web_design";
 
-            //    }
-            //    if (dataTable.Rows.Count > 0)
-            //    {
-            //        response.is_correct = "0";
-            //    }
-            //    else
-            //    {
-            //        response.is_correct = "1";
-            //    }
-        //}
+        //        using (var connection = new SqlConnection(cb.ConnectionString))
+        //        {
+        //            connection.Open();
+        //            string query = "SELECT * FROM [login_data] WHERE login_name = '" + request.account_input + "' AND login_password = '" + request.password_input + "'";
+        //            SqlCommand command = new SqlCommand(query, connection);
+        //            SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //            adapter.Fill(dataTable);
+
+        //        }
+        //        if (dataTable.Rows.Count > 0)
+        //        {
+        //            response.is_correct = "0";
+        //        }
+        //        else
+        //        {
+        //            response.is_correct = "1";
+        //        }
+        //    }
         //    catch (SqlException e)
         //    {
         //        Console.WriteLine(e.ToString());
         //    }
-            response.message = "";
-            return response;
-        }
-
+        //    response.message = "";
+        //    return response;
+        //}
+        #endregion
     }
 }
