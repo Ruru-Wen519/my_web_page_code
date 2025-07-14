@@ -16,3 +16,4 @@ web_api/webapi_order_system/.vs/webapi_order_system/CopilotIndices/17.14.794.219
 *.config
 *.db
 *.bin
+web_api/webapi_order_system/obj/Debug/net8.0/webapi_order_system.AssemblyInfo.cs
