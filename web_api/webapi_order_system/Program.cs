@@ -5,26 +5,26 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 //^_^ 20250701 add by lisa for �ҥ� CORS ==S==
-// �]�w CORS�A�u���\�A���e�ݺ��}
+//CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowMyWebPage", policy =>
     {
-        policy.WithOrigins("https://web-front-code.onrender.com") // �����A���e�ݺ��}
+        policy.WithOrigins("https://web-front-code.onrender.com")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
 });
 
-//^_^ 20250701 add by lisa for �ҥ� CORS ==E==
+//^_^ 20250701 add by lisa for CORS ==E==
 // Add services to the container.
 
 builder.Services.AddControllers();
 
-//^_^ 20250701 add by lisa for �s����Ʈw ==S==
+//^_^ 20250701 add by lisa for database  ==S==
 builder.Services.AddDbContext<web_designContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("WebDatabase")));
-//^_^ 20250701 add by lisa for �s����Ʈw ==E==
+//^_^ 20250701 add by lisa for database ==E==
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -32,10 +32,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-//^_^ 20250701 add by lisa for �ҥ� CORS ==S==
+//^_^ 20250701 add by lisa for  CORS ==S==
 // �ҥ� CORS
 app.UseCors("AllowMyWebPage");
-//^_^ 20250701 add by lisa for �ҥ� CORS ==E==
+//^_^ 20250701 add by lisa for  CORS ==E==
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
