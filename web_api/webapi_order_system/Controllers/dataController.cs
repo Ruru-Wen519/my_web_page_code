@@ -110,11 +110,11 @@ namespace webapi_order_system.Controllers
             //    {
             //        response.is_correct = "1";
             //    }
-        }
-            catch (SqlException e)
-            {
-                Console.WriteLine(e.ToString());
-            }
+        //}
+        //    catch (SqlException e)
+        //    {
+        //        Console.WriteLine(e.ToString());
+        //    }
             response.message = "";
             return response;
         }
