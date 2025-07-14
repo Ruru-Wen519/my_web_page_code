@@ -33,14 +33,6 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 //^_^ 20250701 add by lisa for ±Ò¥Î CORS ==S==
-app.Use(async (context, next) =>
-{
-    context.Response.Headers.Append("Access-Control-Allow-Origin", "https://web-front-code.onrender.com");
-    context.Response.Headers.Append("Access-Control-Allow-Methods", "POST");
-    context.Response.Headers.Append("Access-Control-Allow-Headers", "Content-Type");
-    context.Response.Headers.Append("Access-Control-MAX-Age", "86400");
-    await next();
-});
 // ±Ò¥Î CORS
 app.UseCors("AllowMyWebPage");
 //^_^ 20250701 add by lisa for ±Ò¥Î CORS ==E==
