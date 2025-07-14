@@ -61,14 +61,22 @@ namespace webapi_order_system.Controllers
 
             DataTable dataTable = new DataTable();
 
-            //// 執行原生 SQL 查詢並將結果轉換為 DataTable
-            ////string query = "SELECT * FROM [login_data] WHERE login_name = '@login_name' AND login_password = '@login_password'";
-            ////var parameters = new[] { new SqlParameter("@login_name", request.account_input), new SqlParameter("@login_password", request.password_input) };
-            //string query = "SELECT * FROM [login_data] WHERE login_name = '" + request.account_input + "' AND login_password = '" + request.password_input + "'";
+            // 執行原生 SQL 查詢並將結果轉換為 DataTable
+            //string query = "SELECT * FROM [login_data] WHERE login_name = '@login_name' AND login_password = '@login_password'";
+            //var parameters = new[] { new SqlParameter("@login_name", request.account_input), new SqlParameter("@login_password", request.password_input) };
+            string query = "SELECT * FROM [login_data] WHERE login_name = '" + request.account_input + "' AND login_password = '" + request.password_input + "'";
 
-            //var dto_Login_Datas = _web_DesignContext.Set<login_data>().FromSqlRaw(query).ToList();
+            var dto_Login_Datas = _web_DesignContext.Set<login_data>().FromSqlRaw(query).ToList();
 
-            //if (dto_Login_Datas.Count > 0)
+            if (dto_Login_Datas.Count > 0)
+            {
+                response.is_correct = "0";
+            }
+            else
+            {
+                response.is_correct = "1";
+            }
+            //if ("2025".Equals(request.account_input))
             //{
             //    response.is_correct = "0";
             //}
@@ -76,41 +84,33 @@ namespace webapi_order_system.Controllers
             //{
             //    response.is_correct = "1";
             //}
-            ////if ("2025".Equals(request.account_input))
-            ////{
-            ////    response.is_correct = "0";
-            ////}
-            ////else
-            ////{
-            ////    response.is_correct = "1";
-            ////}
 
-            try
-            {
-                var cb = new SqlConnectionStringBuilder();
-                cb.DataSource = "tcp:web-design-server.database.windows.net";
-                cb.UserID = "Web";
-                cb.Password = "bew_0519";
-                cb.InitialCatalog = "web_design";
+            //try
+            //{
+            //    var cb = new SqlConnectionStringBuilder();
+            //    cb.DataSource = "tcp:web-design-server.database.windows.net";
+            //    cb.UserID = "Web";
+            //    cb.Password = "bew_0519";
+            //    cb.InitialCatalog = "web_design";
 
-                using (var connection = new SqlConnection(cb.ConnectionString))
-                {
-                    connection.Open();
-                    string query = "SELECT * FROM [login_data] WHERE login_name = '" + request.account_input + "' AND login_password = '" + request.password_input + "'";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    adapter.Fill(dataTable);
+            //    using (var connection = new SqlConnection(cb.ConnectionString))
+            //    {
+            //        connection.Open();
+            //        string query = "SELECT * FROM [login_data] WHERE login_name = '" + request.account_input + "' AND login_password = '" + request.password_input + "'";
+            //        SqlCommand command = new SqlCommand(query, connection);
+            //        SqlDataAdapter adapter = new SqlDataAdapter(command);
+            //        adapter.Fill(dataTable);
 
-                }
-                if (dataTable.Rows.Count > 0)
-                {
-                    response.is_correct = "0";
-                }
-                else
-                {
-                    response.is_correct = "1";
-                }
-            }
+            //    }
+            //    if (dataTable.Rows.Count > 0)
+            //    {
+            //        response.is_correct = "0";
+            //    }
+            //    else
+            //    {
+            //        response.is_correct = "1";
+            //    }
+        }
             catch (SqlException e)
             {
                 Console.WriteLine(e.ToString());
