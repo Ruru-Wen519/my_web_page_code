@@ -1,7 +1,7 @@
 ﻿// Models/RequestModel.cs
-namespace webapi_order_system.Models
+namespace webapi_order_system.Dto
 {
-    public class RequestModel
+    public class RequestDto
     {
         public string account_input { get; set; } = "";
         public string password_input { get; set; } = "";

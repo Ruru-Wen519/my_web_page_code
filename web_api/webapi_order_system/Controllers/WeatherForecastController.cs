@@ -1,37 +1,33 @@
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using webapi_order_system.Models;
 
 namespace webapi_order_system.Controllers
 {
-    [EnableCors("AllowMyWebPage")]
     [ApiController]
-    [Route("api/[controller]")]
-    public class DataController : ControllerBase
+    [Route("[controller]")]
+    public class WeatherForecastController : ControllerBase
     {
-        [HttpPost]
-        //public IActionResult login([FromBody] RequestModel request)
-        //{
-        //    var response = new
-        //    {
-        //        Message = $"Hello, {request.account_input}! Your age is {request.password_input}¡C",
-        //        Success = true
-        //    };
-        //    return Ok(response);
-        //}
-        public ResponseModel login([FromBody] RequestModel request)
+        private static readonly string[] Summaries = new[]
         {
-            ResponseModel response = new ResponseModel();
-            if ("2025".Equals(request.account_input))
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
+
+        private readonly ILogger<WeatherForecastController> _logger;
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        {
+            _logger = logger;
+        }
+
+        [HttpGet(Name = "GetWeatherForecast")]
+        public IEnumerable<WeatherForecast> Get()
+        {
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
-                response.is_correct = "0";
-            }
-            else
-            {
-                response.is_correct = "1";
-            }
-            response.message = "";
-            return response;
+                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+                TemperatureC = Random.Shared.Next(-20, 55),
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+            })
+            .ToArray();
         }
     }
 }

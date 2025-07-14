@@ -11,4 +11,8 @@
 *.txt
 *.db
 *.v2
+*.targets
+*.user
+*.config
+*.db
 *.bin

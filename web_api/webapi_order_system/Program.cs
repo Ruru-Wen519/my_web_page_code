@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using webapi_order_system.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 //^_^ 20250701 add by lisa for �ҥ� CORS ==S==
 // �]�w CORS�A�u���\�A���e�ݺ��}
@@ -11,11 +15,17 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod();
     });
 });
-//^_^ 20250701 add by lisa for �ҥ� CORS ==E==
 
+//^_^ 20250701 add by lisa for �ҥ� CORS ==E==
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+//^_^ 20250701 add by lisa for �s����Ʈw ==S==
+builder.Services.AddDbContext<web_designContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("WebDatabase")));
+//^_^ 20250701 add by lisa for �s����Ʈw ==E==
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -23,11 +33,6 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 //^_^ 20250701 add by lisa for �ҥ� CORS ==S==
-app.Use(async (context, next) =>
-{
-    context.Response.Headers.Add("Access-Control-Allow-Origin", "https://web-front-code.onrender.com");
-    await next();
-});
 // �ҥ� CORS
 app.UseCors("AllowMyWebPage");
 //^_^ 20250701 add by lisa for �ҥ� CORS ==E==

@@ -1,7 +1,7 @@
 ﻿// Models/RequestModel.cs
-namespace webapi_order_system.Models
+namespace webapi_order_system.Dto
 {
-    public class ResponseModel
+    public class ResponseDto
     {
         //帳密是否正確
         public string is_correct { get; set; } = "0";
