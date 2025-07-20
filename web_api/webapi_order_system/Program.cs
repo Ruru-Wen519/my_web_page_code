@@ -4,13 +4,17 @@ using webapi_order_system.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 
-//^_^ 20250701 add by lisa for �ҥ� CORS ==S==
+//^_^ 20250701 add by lisa for  CORS ==S==
 //CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowMyWebPage", policy =>
     {
-        policy.WithOrigins("https://web-front-code.onrender.com")
+        //render url
+        //policy.WithOrigins("https://web-front-code.onrender.com")
+        //      .AllowAnyHeader()
+        //      .AllowAnyMethod();
+        policy.WithOrigins("http://localhost:7200")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -33,7 +37,7 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 //^_^ 20250701 add by lisa for  CORS ==S==
-// �ҥ� CORS
+// CORS
 app.UseCors("AllowMyWebPage");
 //^_^ 20250701 add by lisa for  CORS ==E==
 

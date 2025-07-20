@@ -17,9 +17,11 @@ public partial class web_designContext : DbContext
     {
         modelBuilder.Entity<login_data>(entity =>
         {
-            entity.Property(e => e.ID).ValueGeneratedNever();
-            entity.Property(e => e.login_name).HasMaxLength(50);
-            entity.Property(e => e.login_password).HasMaxLength(50);
+            entity.HasKey(e => e.account_no);
+
+            entity.Property(e => e.account_no).HasMaxLength(50);
+            entity.Property(e => e.name).HasMaxLength(50);
+            entity.Property(e => e.password).HasMaxLength(50);
         });
 
         OnModelCreatingPartial(modelBuilder);

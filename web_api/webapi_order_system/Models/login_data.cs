@@ -5,9 +5,9 @@ namespace webapi_order_system.Models;
 
 public partial class login_data
 {
-    public int ID { get; set; }
+    public string account_no { get; set; } = null!;
 
-    public string login_name { get; set; } = null!;
+    public string name { get; set; } = null!;
 
-    public string login_password { get; set; } = null!;
+    public string password { get; set; } = null!;
 }

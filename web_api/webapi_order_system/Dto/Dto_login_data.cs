@@ -1,10 +1,11 @@
-﻿namespace webapi_order_system.Dto
+﻿using System;
+using System.Collections.Generic;
+
+namespace webapi_order_system.Models;
+
+public partial class Dto_login_data
 {
-    public class Dto_login_data
-    {
+    public string name { get; set; } = null!;
 
-        public string login_name { get; set; } = "";
-
-        public string login_password { get; set; } = "";
-    }
+    public string password { get; set; } = null!;
 }
