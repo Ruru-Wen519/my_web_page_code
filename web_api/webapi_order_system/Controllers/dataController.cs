@@ -193,7 +193,7 @@ namespace webapi_order_system.Controllers
             else
             {
                 login_data obj_login_data = new login_data();
-                obj_login_data.account_no = "lisa051920";
+                obj_login_data.account_no = request.name_input;
                 obj_login_data.name = request.account_input;
                 obj_login_data.password = hashedPassword;
                 _web_DesignContext.Add(obj_login_data);

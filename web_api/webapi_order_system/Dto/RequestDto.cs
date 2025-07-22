@@ -9,5 +9,7 @@ namespace webapi_order_system.Dto
        public string entrance { get; set; } = "";
         public string account_input { get; set; } = "";
         public string password_input { get; set; } = "";
+
+        public string name_input { get; set; } = "";
     }
 }
